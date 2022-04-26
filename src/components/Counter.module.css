@@ -1,0 +1,19 @@
+.counter {
+    all: unset;
+    margin-top: 2.4em;
+    margin-left: 10px;
+    border: 2px solid #DEEFE7;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    position: relative;
+    color: #FFFFFF;
+    font-size: 17px;
+}
+
+.counterDone {
+    color: #002333;
+    border: 2px solid #002333;
+}
