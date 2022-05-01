@@ -19,11 +19,10 @@ export const CounterSettings: React.FC<CounterSettingsType> = (
   }
 ) => {
 
-  // const inputClassName = `${error === 'Incorrect value!' ? s.red : ''}`
-
   return (
     <div className={s.settingsBlock}>
-      <div>
+
+      <div className={s.setValuesSection}>
         <h4>Start value:</h4>
         <Input
           inputValue={startValue}
@@ -31,7 +30,7 @@ export const CounterSettings: React.FC<CounterSettingsType> = (
           onChangeValuesCallback={setStartValueCallback}/>
       </div>
 
-      <div>
+      <div className={s.setValuesSection}>
         <h4>Max value:</h4>
         <Input
           inputValue={maxValue}
@@ -39,7 +38,13 @@ export const CounterSettings: React.FC<CounterSettingsType> = (
           onChangeValuesCallback={setMaxValueCallback}/>
       </div>
 
-      <Button name={'set'} disabled={!error || error === 'Incorrect value!'} buttonClassName={s.setButton} callBack={setValuesHandler}/>
+      <div>
+        <Button
+          name={'set'}
+          buttonClassName={s.setButton}
+          disabled={!error || error === 'Incorrect value!'}
+          callBack={setValuesHandler}/>
+      </div>
 
     </div>
   )

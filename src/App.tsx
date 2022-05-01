@@ -6,9 +6,9 @@ export type ErrorType = 'Incorrect value!' | 'Enter correct values and press "se
 
 function App() {
 
-  const [minValue, setMinValue] = useState(0)
-  const [maxValue, setMaxValue] = useState(5)
-  const [number, setNumber] = useState(minValue)
+  const [minValue, setMinValue] = useState<number>(0)
+  const [maxValue, setMaxValue] = useState<number>(5)
+  const [number, setNumber] = useState<number>(minValue)
   let [error, setError] = useState<ErrorType>(null)
 
   useEffect(() => {
@@ -16,6 +16,7 @@ function App() {
     let maxValueAsString = localStorage.getItem('max value')
     if (startValueAsString && maxValueAsString) {
       setMinValue(JSON.parse(startValueAsString))
+      setNumber(JSON.parse(startValueAsString))
       setMaxValue(JSON.parse(maxValueAsString))
     }
   }, [])

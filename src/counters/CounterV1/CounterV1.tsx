@@ -44,15 +44,18 @@ export const CounterV1: React.FC<CounterV1Type> = (
         setStartValueCallback={setStartValueCallback}
         setMaxValueCallback={setMaxValueCallback}/>
 
-      {
-        error
+      <div className={s.displayWrapper}>
+        {error
           ? <div className={errorMessageClassName}>{error}</div>
           : <CounterUI
             number={number}
+            startValue={startValue}
             maxValue={maxValue}
             incrementHandler={incrementHandler}
             resetHandler={resetHandler}/>
-      }
+        }
+      </div>
+
 
     </div>
   )

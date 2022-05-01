@@ -5,12 +5,13 @@ import {Counter} from '../../components/Counter'
 
 type CounterUIType = {
   number: number
+  startValue: number
   maxValue: number
   incrementHandler: () => void
   resetHandler: () => void
 }
 
-export const CounterUI: React.FC<CounterUIType> = ({number, maxValue, incrementHandler, resetHandler}) => {
+export const CounterUI: React.FC<CounterUIType> = ({number, startValue, maxValue, incrementHandler, resetHandler}) => {
   return (
     <div className={s.counterBlock}>
 
@@ -27,7 +28,7 @@ export const CounterUI: React.FC<CounterUIType> = ({number, maxValue, incrementH
       <Button
         name={'reset'}
         buttonClassName={s.resetButton}
-        disabled={!number}
+        disabled={!number || number === startValue}
         callBack={resetHandler}/>
 
     </div>

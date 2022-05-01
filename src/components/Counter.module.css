@@ -1,14 +1,14 @@
 .counter {
-    all: unset;
-    /*margin-top: 2.4em;*/
+    width: 40px;
+    height: 40px;
     margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 2px solid #DEEFE7;
-    padding: 10px 15px;
     border-radius: 50%;
     cursor: pointer;
-    display: inline-block;
     font-weight: 700;
-    position: relative;
     color: #FFFFFF;
     font-size: 17px;
 }
