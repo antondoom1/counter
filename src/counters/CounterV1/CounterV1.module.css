@@ -3,6 +3,7 @@
     margin-bottom: 1.2em;
     display: flex;
     gap: 60px;
+    min-height: 70px;
 }
 
 .errorMessage {
@@ -19,6 +20,7 @@
 }
 
 .displayWrapper {
+    margin-top: 8px;
     min-width: 400px;
 }
 

@@ -1,7 +1,7 @@
-import React, {ChangeEvent} from 'react'
+import React from 'react'
 import s from './CounterV1.module.css'
-import {CounterSettings} from './CounterSettings'
-import {CounterUI} from './CounterUI'
+import {CounterSettings} from '../../components/CounterSettings'
+import {CounterUI} from '../../components/CounterUI'
 import {ErrorType} from '../../App'
 
 type CounterV1Type = {
@@ -12,8 +12,8 @@ type CounterV1Type = {
   incrementHandler: () => void
   resetHandler: () => void
   setValuesHandler: () => void
-  setStartValueCallback: (e: ChangeEvent<HTMLInputElement>) => void
-  setMaxValueCallback: (e: ChangeEvent<HTMLInputElement>) => void
+  setStartValueCallback: (newStartValue: number) => void
+  setMaxValueCallback: (newMaxValue: number) => void
 }
 
 export const CounterV1: React.FC<CounterV1Type> = (

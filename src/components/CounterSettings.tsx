@@ -1,16 +1,16 @@
-import React, {ChangeEvent} from 'react'
+import React from 'react'
 import s from './CounterSettings.module.css'
-import {Input} from '../../components/Input'
-import {Button} from '../../components/Button'
-import {ErrorType} from '../../App'
+import {Input} from './universal-input/Input'
+import {Button} from './universal-button/Button'
+import {ErrorType} from '../App'
 
 type CounterSettingsType = {
   startValue: number
   maxValue: number
   error: ErrorType
   setValuesHandler: () => void
-  setStartValueCallback: (e: ChangeEvent<HTMLInputElement>) => void
-  setMaxValueCallback: (e: ChangeEvent<HTMLInputElement>) => void
+  setStartValueCallback: (newStartValue: number) => void
+  setMaxValueCallback: (newMaxValue: number) => void
 }
 
 export const CounterSettings: React.FC<CounterSettingsType> = (

@@ -1,17 +1,22 @@
-import React from 'react'
+import React, {ChangeEvent} from 'react'
 
 type InputType = {
   inputValue: number
   inputClassName: string
-  onChangeValuesCallback: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChangeValuesCallback: (newValue: number) => void
 }
 
 export const Input: React.FC<InputType> = ({inputValue, inputClassName, onChangeValuesCallback}) => {
+
+  const onChangeValues = (e: ChangeEvent<HTMLInputElement>) => {
+    onChangeValuesCallback(+e.currentTarget.value)
+  }
+
   return (
     <input
       type={'number'}
       value={inputValue}
       className={inputClassName}
-      onChange={onChangeValuesCallback}/>
+      onChange={onChangeValues}/>
   )
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 import s from './CounterUI.module.css'
-import {Button} from '../../components/Button'
-import {Counter} from '../../components/Counter'
+import {Button} from './universal-button/Button'
+import {Counter} from './Counter'
 
-type CounterUIType = {
+export type CounterUIType = {
   number: number
   startValue: number
   maxValue: number
