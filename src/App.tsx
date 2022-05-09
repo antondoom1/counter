@@ -51,41 +51,38 @@ function App() {
     localStorage.setItem('max value of counter v2', JSON.stringify(counters[1].maxValue))
   }, [counters.map(c => c)])
 
-  const incrementNumber = (counterId: number, number: number, maxValue: number) => {
-    // if (number < maxValue)
-      setCounters(counters.map(c => c.counterId === counterId ? {...c, number: c.number + 1} : c))
+  const incrementNumber = (counterId: number) => {
+    setCounters(counters.map(c => c.counterId === counterId ? {...c, number: c.number + 1} : c))
   }
   const resetNumber = (counterId: number) => {
     setCounters(counters.map(c => c.counterId === counterId ? {...c, number: c.minValue} : c))
   }
   const setStartValue = (counterId: number, maxValue: number, newStartValue: number) => {
-    setError('Enter correct values and press "set"')
+    if (counterId === 1) setError('Enter correct values and press "set"')
     if (newStartValue < 0 || newStartValue >= maxValue) {
-      setError('Incorrect value!')
+      if (counterId === 1) setError('Incorrect value!')
     }
     setCounters(counters.map(c => c.counterId === counterId ? {...c, minValue: newStartValue} : c))
   }
   const setNewMaxValue = (counterId: number, minValue: number, newMaxValue: number) => {
-    setError('Enter correct values and press "set"')
+    if (counterId === 1) setError('Enter correct values and press "set"')
     if (newMaxValue < 0 || newMaxValue <= minValue) {
-      setError('Incorrect value!')
+      if (counterId === 1) setError('Incorrect value!')
     }
     setCounters(counters.map(c => c.counterId === counterId ? {...c, maxValue: newMaxValue} : c))
   }
-
   const setValues = (counterId: number, minValue: number, maxValue: number) => {
     if (minValue < maxValue && minValue >= 0) {
       setCounters(counters.map(c => c.counterId === counterId ? {...c, number: minValue} : c))
-      setError(null)
-      setShowCounter(!showCounter)
+      if (counterId === 1) setError(null)
+      if (counterId === 2) setShowCounter(!showCounter)
     }
   }
-
   const showSettingsBlock = () => {
     setShowCounter(!showCounter)
   }
 
-  if (counters[0].minValue >= counters[0].maxValue || counters[0].minValue < 0 || counters[0].maxValue < 0) error = 'Incorrect value!'
+  if (counters[0].minValue >= counters[0].maxValue || counters[0].minValue < 0 || counters[0].maxValue < 0 || counters[0].maxValue >= 10000) error = 'Incorrect value!'
 
   return (
     <div className="app">
@@ -101,8 +98,9 @@ function App() {
                 number={c.number}
                 startValue={c.minValue}
                 maxValue={c.maxValue}
+                disableSetValuesButton={!error || error === 'Incorrect value!'}
                 error={error}
-                incrementHandler={() => incrementNumber(c.counterId, c.number, c.maxValue)}
+                incrementHandler={() => incrementNumber(c.counterId)}
                 resetHandler={() => resetNumber(c.counterId)}
                 setValuesHandler={() => setValues(c.counterId, c.minValue, c.maxValue)}
                 setStartValueCallback={(newStartValue) => setStartValue(c.counterId, c.maxValue, newStartValue)}
@@ -123,9 +121,9 @@ function App() {
               number={c.number}
               startValue={c.minValue}
               maxValue={c.maxValue}
-              error={error}
+              disableSetValuesButton={c.maxValue < 0 || c.minValue < 0 || c.maxValue <= c.minValue || c.maxValue >= 10000}
               showCounter={showCounter}
-              incrementHandler={() => incrementNumber(c.counterId, c.number, c.maxValue)}
+              incrementHandler={() => incrementNumber(c.counterId)}
               resetHandler={() => resetNumber(c.counterId)}
               setStartValueCallback={(newStartValue) => setStartValue(c.counterId, c.maxValue, newStartValue)}
               setMaxValueCallback={(newMaxValue) => setNewMaxValue(c.counterId, c.minValue, newMaxValue)}

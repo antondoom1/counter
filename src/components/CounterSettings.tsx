@@ -2,12 +2,11 @@ import React from 'react'
 import s from './CounterSettings.module.css'
 import {Input} from './universal-input/Input'
 import {Button} from './universal-button/Button'
-import {ErrorType} from '../App'
 
 type CounterSettingsType = {
   startValue: number
   maxValue: number
-  error: ErrorType
+  disableSetValuesButton: boolean
   setValuesHandler: () => void
   setStartValueCallback: (newStartValue: number) => void
   setMaxValueCallback: (newMaxValue: number) => void
@@ -15,7 +14,7 @@ type CounterSettingsType = {
 
 export const CounterSettings: React.FC<CounterSettingsType> = (
   {
-    startValue, maxValue, error, setValuesHandler, setStartValueCallback, setMaxValueCallback
+    startValue, maxValue, disableSetValuesButton, setValuesHandler, setStartValueCallback, setMaxValueCallback
   }
 ) => {
 
@@ -34,7 +33,7 @@ export const CounterSettings: React.FC<CounterSettingsType> = (
         <h4>Max value:</h4>
         <Input
           inputValue={maxValue}
-          inputClassName={maxValue < 0 || maxValue <= startValue ? s.red : ''}
+          inputClassName={maxValue < 0 || maxValue <= startValue || maxValue >= 10000 ? s.red : ''}
           onChangeValuesCallback={setMaxValueCallback}/>
       </div>
 
@@ -42,7 +41,7 @@ export const CounterSettings: React.FC<CounterSettingsType> = (
         <Button
           name={'set'}
           buttonClassName={s.setButton}
-          disabled={!error || error === 'Incorrect value!'}
+          disabled={disableSetValuesButton}
           callBack={setValuesHandler}/>
       </div>
 

@@ -18,7 +18,7 @@ export const CounterUI: React.FC<CounterUIType> = ({number, startValue, maxValue
       <Button
         name={'inc'}
         buttonClassName={s.incrementButton}
-        disabled={number === maxValue}
+        disabled={number === maxValue || number < 0 || maxValue < startValue || maxValue >= 10000}
         callBack={incrementHandler}/>
 
       <Counter

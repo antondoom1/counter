@@ -1,5 +1,4 @@
 import React from 'react'
-import {ErrorType} from '../../App'
 import s from './CounterV2.module.css'
 import {Button} from '../../components/universal-button/Button'
 import {CounterSettings} from '../../components/CounterSettings'
@@ -10,7 +9,7 @@ type CounterV2Type = {
   startValue: number
   maxValue: number
   showCounter: boolean
-  error: ErrorType
+  disableSetValuesButton: boolean
   incrementHandler: () => void
   resetHandler: () => void
   setValuesHandler: () => void
@@ -24,7 +23,7 @@ export const CounterV2: React.FC<CounterV2Type> = (
     number,
     startValue,
     maxValue,
-    error,
+    disableSetValuesButton,
     incrementHandler,
     resetHandler,
     showCounter,
@@ -57,7 +56,7 @@ export const CounterV2: React.FC<CounterV2Type> = (
             <CounterSettings
               startValue={startValue}
               maxValue={maxValue}
-              error={error}
+              disableSetValuesButton={disableSetValuesButton}
               setValuesHandler={setValuesHandler}
               setStartValueCallback={setStartValueCallback}
               setMaxValueCallback={setMaxValueCallback}/>

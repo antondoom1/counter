@@ -8,6 +8,7 @@ type CounterV1Type = {
   number: number
   startValue: number
   maxValue: number
+  disableSetValuesButton: boolean
   error: ErrorType
   incrementHandler: () => void
   resetHandler: () => void
@@ -21,6 +22,7 @@ export const CounterV1: React.FC<CounterV1Type> = (
     number,
     startValue,
     maxValue,
+    disableSetValuesButton,
     error,
     incrementHandler,
     resetHandler,
@@ -39,7 +41,7 @@ export const CounterV1: React.FC<CounterV1Type> = (
       <CounterSettings
         startValue={startValue}
         maxValue={maxValue}
-        error={error}
+        disableSetValuesButton={disableSetValuesButton}
         setValuesHandler={setValuesHandler}
         setStartValueCallback={setStartValueCallback}
         setMaxValueCallback={setMaxValueCallback}/>
