@@ -17,6 +17,6 @@ export const Input: React.FC<InputType> = ({inputValue, inputClassName, onChange
       type={'number'}
       value={inputValue}
       className={inputClassName}
-      onChange={onChangeValues}/>
+      onChange={(e) => onChangeValuesCallback(+e.currentTarget.value)}/>
   )
 }
