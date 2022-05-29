@@ -9,7 +9,7 @@ type InputType = {
 export const Input: React.FC<InputType> = ({inputValue, inputClassName, onChangeValuesCallback}) => {
 
   const onChangeValues = (e: ChangeEvent<HTMLInputElement>) => {
-    onChangeValuesCallback(+e.currentTarget.value)
+    onChangeValuesCallback(Math.trunc(+e.currentTarget.value))
   }
 
   return (
@@ -17,6 +17,6 @@ export const Input: React.FC<InputType> = ({inputValue, inputClassName, onChange
       type={'number'}
       value={inputValue}
       className={inputClassName}
-      onChange={(e) => onChangeValuesCallback(+e.currentTarget.value)}/>
+      onChange={onChangeValues}/>
   )
 }

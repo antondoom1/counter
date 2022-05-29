@@ -1,12 +1,6 @@
 import {combineReducers, createStore} from 'redux'
-import {countersReducer} from './counters-reducer'
-import {persistStore, persistReducer} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-
-const persistConfig = {
-  key: 'root',
-  storage
-}
+import {countersReducer, resetNumberAC} from './counters-reducer'
+import {loadState, saveState} from '../utils/local-storage-utils'
 
 export type AppRootStateType = ReturnType<typeof rootReducer>
 
@@ -14,9 +8,13 @@ const rootReducer = combineReducers({
   counters: countersReducer
 })
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+export const store = createStore(rootReducer, loadState())
 
-export const store = createStore(persistedReducer)
-// @ts-ignore
-export const persistor = persistStore(store)
+store.dispatch(resetNumberAC(1))
+store.dispatch(resetNumberAC(2))
 
+store.subscribe(() => {
+  saveState({
+    counters: store.getState().counters
+  })
+})

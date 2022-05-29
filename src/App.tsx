@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import './App.css'
 import {CounterV1} from './counters/CounterV1/CounterV1'
 import {CounterV2} from './counters/CounterV2/CounterV2'
@@ -21,38 +21,6 @@ function App() {
 
   const [showCounter, setShowCounter] = useState<boolean>(true)
   let [error, setError] = useState<ErrorType>(null)
-
-  // useEffect(() => {
-  //   let startValueCounterV1AsString = localStorage.getItem('start value of counter v1')
-  //   let maxValueCounterV1AsString = localStorage.getItem('max value of counter v1')
-  //   let startValueCounterV2AsString = localStorage.getItem('start value of counter v2')
-  //   let maxValueCounterV2AsString = localStorage.getItem('max value of counter v2')
-  //
-  //   setCounters(counters.map(c =>
-  //     c.counterId === 1 && startValueCounterV1AsString && maxValueCounterV1AsString
-  //       ?
-  //       {
-  //         ...c,
-  //         minValue: JSON.parse(startValueCounterV1AsString),
-  //         maxValue: JSON.parse(maxValueCounterV1AsString),
-  //         number: JSON.parse(startValueCounterV1AsString)
-  //       } :
-  //       c.counterId === 2 && startValueCounterV2AsString && maxValueCounterV2AsString
-  //         ?
-  //         {
-  //           ...c,
-  //           minValue: JSON.parse(startValueCounterV2AsString),
-  //           maxValue: JSON.parse(maxValueCounterV2AsString),
-  //           number: JSON.parse(startValueCounterV2AsString)
-  //         } : c
-  //   ))
-  // }, [])
-  // useEffect(() => {
-  //   localStorage.setItem('start value of counter v1', JSON.stringify(counters[0].minValue))
-  //   localStorage.setItem('max value of counter v1', JSON.stringify(counters[0].maxValue))
-  //   localStorage.setItem('start value of counter v2', JSON.stringify(counters[1].minValue))
-  //   localStorage.setItem('max value of counter v2', JSON.stringify(counters[1].maxValue))
-  // }, [counters.map(c => c)])
 
   const incrementNumber = (counterId: number) => {
     dispatch(incrementNumberAC(counterId))
