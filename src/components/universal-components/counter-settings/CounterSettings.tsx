@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './CounterSettings.module.css'
-import {Input} from './universal-input/Input'
-import {Button} from './universal-button/Button'
+import {Input} from '../universal-input/Input'
+import {Button} from '../universal-button/Button'
 
 type CounterSettingsType = {
   startValue: number

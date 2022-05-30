@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './CounterUI.module.css'
-import {Button} from './universal-button/Button'
-import {Counter} from './Counter'
+import {Button} from '../universal-button/Button'
+import {Counter} from '../counter/Counter'
 
 export type CounterUIType = {
   number: number
