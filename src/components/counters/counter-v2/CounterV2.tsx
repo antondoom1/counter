@@ -48,7 +48,7 @@ export const CounterV2 = () => {
     <div className={s.counterWrapper}>
 
       {
-        showCounter
+        !showCounter
           ?
           <div className={s.displayWrapper}>
             <CounterUI
